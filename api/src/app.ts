@@ -3,7 +3,7 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as mongoose from 'mongoose';
-
+import { MONGODB_URI } from './utils/secrets';
 import voteRouter from './routes/voterouter';
 
 // Creates and configures an ExpressJS web server.
@@ -17,7 +17,10 @@ class App {
     this.express = express();
     this.middleware();
     this.routes();
-    mongoose.connect('mongodb://localhost:27017/sessionvote')
+    if(MONGODB_URI)
+    {
+      mongoose.connect(MONGODB_URI);
+    }
   }
 
   // Configure Express middleware.
