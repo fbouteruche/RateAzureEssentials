@@ -10,4 +10,5 @@ mkdir /app
 cd /app
 git clone https://github.com/fbouteruche/RateAzureEssentials.git
 cd RateAzureEssentials/api
+npm install
 npm run serve & echo "api server started"
