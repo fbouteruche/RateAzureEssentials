@@ -21,12 +21,19 @@ export class VoteRouter {
     let findQuery = SessionVote.findOne({'date': new Date(date)}, );
     findQuery.select('date countFor countAgainst');
     let sessionVote = await findQuery.exec();
-    res.status(200).send(
-      {
-        "date" : sessionVote.date,
-        "countFor": sessionVote.countFor,
-        "countAgainst": sessionVote.countAgainst
-      });
+    if(sessionVote)
+    {
+      res.status(200).send(
+        {
+          "date" : sessionVote.date,
+          "countFor": sessionVote.countFor,
+          "countAgainst": sessionVote.countAgainst
+        });
+    }
+    else
+    {
+      res.sendStatus(404);
+    }
   }
 
   public async postFor(req: Request, res: Response, next:NextFunction)
