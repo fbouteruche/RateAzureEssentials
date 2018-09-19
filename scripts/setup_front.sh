@@ -8,6 +8,9 @@ sudo apt-get install -y npm
 npm install -g typescript
 mkdir /app
 cd /app
+if [ -d "RateAzureEssentials" ]; then
+  rm -rf RateAzureEssentials
+fi
 git clone https://github.com/fbouteruche/RateAzureEssentials.git
 cd RateAzureEssentials/web
 npm install
