@@ -19,7 +19,7 @@ class App {
     this.routes();
     if(MONGODB_URI)
     {
-      mongoose.connect(MONGODB_URI);
+      mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
     }
   }
 
@@ -36,12 +36,14 @@ class App {
      * working so far. This function will change when we start to add more
      * API endpoints */
     let router = express.Router();
+
     // placeholder route handler
     router.get('/', (req, res, next) => {
       res.json({
         message: 'Hello World!'
       });
     });
+
     this.express.use('/', router);
     this.express.use('/api/v1/votes', voteRouter);
   }

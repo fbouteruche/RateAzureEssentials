@@ -1,7 +1,7 @@
 let mongodburi = process.env["MONGODB_URI"]
 if(mongodburi)
 {
-    mongodburi = mongodburi + '/sessionvote';
+    mongodburi = mongodburi;
 }
 else{
     mongodburi = 'mongodb://localhost:27017/sessionvote'

@@ -13,6 +13,6 @@ if [ -d "RateAzureEssentials" ]; then
 fi
 git clone https://github.com/fbouteruche/RateAzureEssentials.git
 cd RateAzureEssentials/api
-export MONGODB_URI='mongodb://10.100.3.5:27017' 
+export MONGODB_URI='mongodb://10.100.3.5:27017/sessionvote' 
 npm install
 npm run serve & echo "api server started"

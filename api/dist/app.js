@@ -14,7 +14,7 @@ var App = /** @class */ (function () {
         this.middleware();
         this.routes();
         if (secrets_1.MONGODB_URI) {
-            mongoose.connect(secrets_1.MONGODB_URI);
+            mongoose.connect(secrets_1.MONGODB_URI, { useNewUrlParser: true });
         }
     }
     // Configure Express middleware.
