@@ -24,7 +24,9 @@ var App = /** @class */ (function () {
          * working so far. This function will change when we start to add more
          * API endpoints */
         var router = express.Router();
-        this.express.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
+        console.log(__dirname);
+        //this.express.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
+        this.express.use(express.static(path.join("dist", "public"), { maxAge: 31557600000 }));
         // placeholder route handler
         this.express.use('/', homerouter_1["default"]);
         this.express.all('*', function (req, res, next) {

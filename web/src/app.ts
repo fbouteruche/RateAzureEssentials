@@ -31,7 +31,8 @@ class App {
      * API endpoints */
     let router = express.Router();
     console.log(__dirname);
-    this.express.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
+    //this.express.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
+    this.express.use(express.static(path.join("dist", "public"), { maxAge: 31557600000 }));
     
 
     // placeholder route handler
