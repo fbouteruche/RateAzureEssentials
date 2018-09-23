@@ -1,9 +1,9 @@
-html
-  head
-    title= title
-  body
-    h1= message
-    form(action='/for', method='post')
-      input(type="submit", value=`J'adore cette session ! C'est passionant !`)
-      input(type="submit", formaction='/against', method='post', value=`Je m'ennuie à mourir !`)
-  
+extends ../node_modules/pug-bootstrap/_bootstrap
+append styles
+block body
+  .container
+    form.form-signin
+      h2.form-signin-heading Merci de voter pour la session Azure Essentials du 25/09/2018 !
+      
+      button.btn.btn-lg.btn-primary.btn-block(type='submit', formaction='/for', formmethod='post') J'adore cette session ! C'est passionant
+      button.btn.btn-lg.btn-primary.btn-block(type='submit', formaction='/against', formmethod='post') Je m'ennuie à mourir !
