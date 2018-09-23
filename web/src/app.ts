@@ -30,7 +30,7 @@ class App {
      * working so far. This function will change when we start to add more
      * API endpoints */
     let router = express.Router();
-
+    console.log(__dirname);
     this.express.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
     
 
