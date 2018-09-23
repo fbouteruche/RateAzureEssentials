@@ -5,6 +5,6 @@ if (mongodburi) {
     mongodburi = mongodburi;
 }
 else {
-    mongodburi = 'mongodb://localhost:27017';
+    mongodburi = 'mongodb://localhost:27017/sessionvote';
 }
 exports.MONGODB_URI = mongodburi;

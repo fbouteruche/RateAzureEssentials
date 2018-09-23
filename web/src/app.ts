@@ -1,4 +1,5 @@
 import * as express from 'express';
+import * as logger from 'morgan';
 import homeRouter from './routes/homerouter';
 
 
@@ -17,6 +18,7 @@ class App {
 
   // Configure Express middleware.
   private middleware(): void {
+    this.express.use(logger('dev'));
     this.express.set('views', './views');
     this.express.set('view engine', 'pug');
   }
@@ -27,10 +29,17 @@ class App {
      * working so far. This function will change when we start to add more
      * API endpoints */
     let router = express.Router();
+
     // placeholder route handler
     this.express.use('/', homeRouter);
+
+    this.express.all('*', function(req: express.Request, res: express.Response, next: express.NextFunction){
+      console.log('une requete est arrivee')
+      next();
+    });
   }
 
+  
 }
 
 export default new App().express;

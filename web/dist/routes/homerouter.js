@@ -36,6 +36,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var express_1 = require("express");
+var http = require("http");
+var secrets_1 = require("../utils/secrets");
 var HomeRouter = /** @class */ (function () {
     /**
      * Initialize the HeroRouter
@@ -54,12 +56,75 @@ var HomeRouter = /** @class */ (function () {
             });
         });
     };
+    HomeRouter.prototype["for"] = function (req, response, next) {
+        return __awaiter(this, void 0, void 0, function () {
+            var options, myreq;
+            return __generator(this, function (_a) {
+                options = {
+                    hostname: secrets_1.API_HOST,
+                    protocol: 'http:',
+                    port: secrets_1.API_PORT,
+                    path: '/api/v1/votes/2018-09-26/for/',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
+                myreq = http.request(options, function (res) {
+                    res.setEncoding('utf8');
+                    res.on('data', function (chunk) {
+                    });
+                    res.on('end', function () {
+                        return response.redirect('/');
+                    });
+                });
+                myreq.on('error', function (e) {
+                    console.error("problem with request: " + e.message);
+                });
+                // write data to request body
+                myreq.end();
+                return [2 /*return*/];
+            });
+        });
+    };
+    HomeRouter.prototype.against = function (req, response, next) {
+        return __awaiter(this, void 0, void 0, function () {
+            var options, myreq;
+            return __generator(this, function (_a) {
+                options = {
+                    hostname: secrets_1.API_HOST,
+                    protocol: 'http:',
+                    port: secrets_1.API_PORT,
+                    path: '/api/v1/votes/2018-09-26/against/',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
+                myreq = http.request(options, function (res) {
+                    res.on('data', function (chunk) {
+                    });
+                    res.on('end', function () {
+                        return response.redirect('/');
+                    });
+                });
+                myreq.on('error', function (e) {
+                    console.error("problem with request: " + e.message);
+                });
+                // write data to request body
+                myreq.end();
+                return [2 /*return*/];
+            });
+        });
+    };
     /**
      * Take each handler, and attach to one of the Express.Router's
      * endpoints.
      */
     HomeRouter.prototype.init = function () {
         this.router.get('/', this.index);
+        this.router.post("/for", this["for"]);
+        this.router.post("/against", this.against);
     };
     return HomeRouter;
 }());

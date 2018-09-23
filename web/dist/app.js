@@ -1,6 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var express = require("express");
+var logger = require("morgan");
 var homerouter_1 = require("./routes/homerouter");
 // Creates and configures an ExpressJS web server.
 var App = /** @class */ (function () {
@@ -12,6 +13,7 @@ var App = /** @class */ (function () {
     }
     // Configure Express middleware.
     App.prototype.middleware = function () {
+        this.express.use(logger('dev'));
         this.express.set('views', './views');
         this.express.set('view engine', 'pug');
     };
@@ -23,6 +25,10 @@ var App = /** @class */ (function () {
         var router = express.Router();
         // placeholder route handler
         this.express.use('/', homerouter_1["default"]);
+        this.express.all('*', function (req, res, next) {
+            console.log('une requete est arrivee');
+            next();
+        });
     };
     return App;
 }());

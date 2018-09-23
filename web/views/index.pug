@@ -3,3 +3,7 @@ html
     title= title
   body
     h1= message
+    form(action='/for', method='post')
+      input(type="submit", value=`J'adore cette session ! C'est passionant !`)
+      input(type="submit", formaction='/against', method='post', value=`Je m'ennuie à mourir !`)
+  
