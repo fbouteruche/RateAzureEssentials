@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as logger from 'morgan';
 import homeRouter from './routes/homerouter';
+import * as path from "path";
 
 
 // Creates and configures an ExpressJS web server.
@@ -29,6 +30,9 @@ class App {
      * working so far. This function will change when we start to add more
      * API endpoints */
     let router = express.Router();
+
+    this.express.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
+    
 
     // placeholder route handler
     this.express.use('/', homeRouter);

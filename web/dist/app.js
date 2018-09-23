@@ -3,6 +3,7 @@ exports.__esModule = true;
 var express = require("express");
 var logger = require("morgan");
 var homerouter_1 = require("./routes/homerouter");
+var path = require("path");
 // Creates and configures an ExpressJS web server.
 var App = /** @class */ (function () {
     //Run configuration methods on the Express instance.
@@ -23,6 +24,7 @@ var App = /** @class */ (function () {
          * working so far. This function will change when we start to add more
          * API endpoints */
         var router = express.Router();
+        this.express.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
         // placeholder route handler
         this.express.use('/', homerouter_1["default"]);
         this.express.all('*', function (req, res, next) {

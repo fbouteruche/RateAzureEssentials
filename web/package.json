@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run serve",
-    "build": "npm run build-tsc",
+    "build": "npm run build-tsc && npm run copy-static-assets",
     "build-tsc": "tsc",
     "serve": "npm run build && node dist/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "copy-static-assets": "ts-node copyStaticAssets.ts"
   },
   "author": "",
   "license": "MIT",
@@ -20,7 +21,8 @@
     "pug": "^2.0.3",
     "pug-bootstrap": "0.0.15",
     "request": "^2.88.0",
-    "request-promise-native": "^1.0.5"
+    "request-promise-native": "^1.0.5",
+    "shelljs": "^0.8.2"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
