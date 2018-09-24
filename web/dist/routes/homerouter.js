@@ -52,7 +52,18 @@ var HomeRouter = /** @class */ (function () {
     HomeRouter.prototype.index = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, res.render('index', { title: 'Hey', message: 'Hello there!' })];
+                if (req.query && req.query.feedback) {
+                    if (req.query.feedback == 1) {
+                        return [2 /*return*/, res.render('index', { title: 'Azure Essentials', thanksmessage: 'Votre vote a bien été pris en compte. Merci pour vos encouragements !' })];
+                    }
+                    else {
+                        return [2 /*return*/, res.render('index', { title: 'Azure Essentials', sorrymessage: 'Votre vote a bien été pris en compte. Nous sommes désolés et allons travailler dur pour nous améliorer !' })];
+                    }
+                }
+                else {
+                    return [2 /*return*/, res.render('index', { title: 'Azure Essentials' })];
+                }
+                return [2 /*return*/];
             });
         });
     };
@@ -75,7 +86,7 @@ var HomeRouter = /** @class */ (function () {
                     res.on('data', function (chunk) {
                     });
                     res.on('end', function () {
-                        return response.redirect('/');
+                        return response.redirect('/?feedback=1');
                     });
                 });
                 myreq.on('error', function (e) {
@@ -105,7 +116,7 @@ var HomeRouter = /** @class */ (function () {
                     res.on('data', function (chunk) {
                     });
                     res.on('end', function () {
-                        return response.redirect('/');
+                        return response.redirect('/?feedback=0');
                     });
                 });
                 myreq.on('error', function (e) {

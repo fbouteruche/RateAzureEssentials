@@ -18,7 +18,21 @@ export class HomeRouter {
    */
   public async index(req: Request, res: Response, next: NextFunction) {
     
-    return res.render('index', { title: 'Hey', message: 'Hello there!' });
+    if(req.query && req.query.feedback)
+    {
+      if(req.query.feedback == 1)
+      {
+        return res.render('index', { title: 'Azure Essentials',  thanksmessage: 'Votre vote a bien été pris en compte. Merci pour vos encouragements !' });
+
+      }
+      else
+      {
+        return res.render('index', { title: 'Azure Essentials',  sorrymessage: 'Votre vote a bien été pris en compte. Nous sommes désolés et allons travailler dur pour nous améliorer !' });
+      }
+    }
+    else{
+      return res.render('index', { title: 'Azure Essentials'});
+    }
   }
 
   public async for(req: Request, response: Response, next: NextFunction)
@@ -39,7 +53,7 @@ export class HomeRouter {
       res.on('data', (chunk) => {
       });
       res.on('end', () => {
-        return response.redirect('/');
+        return response.redirect('/?feedback=1');
       });
     });
     
@@ -68,7 +82,7 @@ export class HomeRouter {
       res.on('data', (chunk) => {
       });
       res.on('end', () => {
-        return response.redirect('/');
+        return response.redirect('/?feedback=0');
       });
     });
     

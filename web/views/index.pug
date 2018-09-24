@@ -32,10 +32,15 @@ html(lang="en")
               .navbar-brand
                 label Azure Essentials
       .jumbotron
-        .container
+        div.container(align="center")
           h2 Merci de voter pour la session Azure Essentials du 25/09/2018 !
-          .label-success #{thanksmessage}
-          .label-danger #{sorrymessage}
+          h4
+            if thanksmessage
+              .label.label-success #{thanksmessage}
+            else if sorrymessage
+              .label.label-danger #{sorrymessage}
+            else
+              .label  
       .container
         form.form-horizontal
           button.btn.btn-lg.btn-primary.btn-block(type='submit', formaction='/for', formmethod='post') J'adore cette session ! C'est passionant !
