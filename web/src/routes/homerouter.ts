@@ -41,7 +41,7 @@ export class HomeRouter {
       hostname: API_HOST,
       protocol: 'http:',
       port: API_PORT,
-      path: '/api/v1/votes/2018-09-25/for/',
+      path: '/api/v1/votes/2018-11-12/for/',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export class HomeRouter {
       hostname: API_HOST,
       protocol: 'http:',
       port: API_PORT,
-      path: '/api/v1/votes/2018-09-25/against/',
+      path: '/api/v1/votes/2018-11-12/against/',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
