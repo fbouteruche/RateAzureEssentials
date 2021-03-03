@@ -18,7 +18,7 @@
     "express": "^4.16.3",
     "http": "0.0.0",
     "morgan": "^1.9.1",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "pug-bootstrap": "0.0.15",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
